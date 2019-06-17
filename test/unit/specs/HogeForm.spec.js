@@ -1,12 +1,13 @@
 import { mount } from '@vue/test-utils'
-import HogePane from '../../../src/components/HogePane.vue'
+import HogeForm from '../../../src/components/HogeForm.vue'
 import hogeApi from '../../../src/api/hoge'
 import sinon from 'sinon'
 
-describe('HogePane.vue', () => {
+describe('HogeForm.vue', () => {
   // const sandbox = sinon.sandbox.create()
 
   let hogeApiMock
+  let wrapper
   beforeEach(() => {
     // sandbox.restore()
     hogeApiMock = sinon
@@ -15,7 +16,9 @@ describe('HogePane.vue', () => {
       .resolves('aaa')
   })
   it('should be called API properly', done => {
-    const wrapper = mount(HogePane)
+    wrapper = mount(HogeForm, {
+      attachToDocument: true
+    })
 
     wrapper.find('#hoge-button').trigger('click')
     wrapper.vm.$nextTick(() => {
@@ -25,5 +28,6 @@ describe('HogePane.vue', () => {
   })
   afterEach(() => {
     hogeApiMock.restore()
+    wrapper.destroy()
   })
 })

@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <hoge-pane />
+    <hoge-form />
+    <simple-form></simple-form>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -59,11 +60,14 @@
 
 <script>
 import hogeApi from '../api/hoge'
-import HogePane from './HogePane'
+import HogeForm from './HogeForm'
+import SimpleForm from './SimpleForm'
+
 export default {
   name: 'HelloWorld',
   components: {
-    HogePane
+    HogeForm,
+    SimpleForm
   },
   data() {
     return {
